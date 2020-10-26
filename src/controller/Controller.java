@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.beans.Observable;
 import model.Blarney;
 import model.Kinsale;
 import model.Youghal;
@@ -20,19 +19,18 @@ public class Controller {
     public void makeShip(String thread, String ship) {
         if (thread.equalsIgnoreCase("KINSALE")) {
             kinsale.createShip(ship);
-        }
-        else if (thread.equalsIgnoreCase("YOUGHAL")) {
+        } else if (thread.equalsIgnoreCase("YOUGHAL")) {
             youghal.createShip(ship);
         }
     }
 
-    public void startThreads(){
+    public void startThreads() {
         kinsale.addObserver(blarney);
         tKinsale.start();
         tBlarney.start();
     }
 
-    public Kinsale kinsale(){
+    public Kinsale kinsale() {
         return kinsale;
     }
 
