@@ -22,9 +22,9 @@ public class Blarney implements Observer, Runnable {
         try {
             while (true) {
                 Thread.sleep(2000);
-                if (fleet.isEmpty()) {
+                if (fleet.size() != 10) {
                     System.out.println("THERE IS NO FLEET IN BLARNEY");
-                } else if (fleet.size() == 10) {
+                } else {
                     System.out.println("FLEET IN BLARNEY SPOTTED");
                 }
             }
