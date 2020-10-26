@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 public class View extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage kinsaleStage) throws Exception {
         Parent root1 = FXMLLoader.load(getClass().getResource("../controller/KinsaleView.fxml"));
-        stage.setTitle("Kinsale View");
+        kinsaleStage.setTitle("Kinsale View");
         Scene kinsaleScene = new Scene(root1, 1280, 720);
-        stage.setScene(kinsaleScene);
-        stage.show();
+        kinsaleStage.setScene(kinsaleScene);
+        kinsaleStage.show();
 
         Stage youghalStage = new Stage();
         youghalStage.setTitle("Youghal View");
