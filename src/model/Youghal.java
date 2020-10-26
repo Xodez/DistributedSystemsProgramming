@@ -8,7 +8,6 @@ import model.ships.Ship;
 import java.util.ArrayList;
 import java.util.Observable;
 
-@Deprecated
 public class Youghal extends Observable implements Runnable {
 
     AircraftCarrierFactory acf = new AircraftCarrierFactory();

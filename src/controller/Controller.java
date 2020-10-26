@@ -5,7 +5,6 @@ import model.Blarney;
 import model.Kinsale;
 import model.Youghal;
 
-@Deprecated
 public class Controller {
 
     // Creates the three sites

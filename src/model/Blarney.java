@@ -5,7 +5,6 @@ import model.ships.Ship;
 import java.lang.reflect.Type;
 import java.util.*;
 
-@Deprecated
 public class Blarney implements Observer, Runnable {
 
     ArrayList<Ship> fleet = new ArrayList<>();
@@ -13,18 +12,15 @@ public class Blarney implements Observer, Runnable {
     @Override
     public void update(Observable o, Object arg) {
         System.out.println("BLARNEY UPDATED");
-        if(arg instanceof ArrayList){
-            for (int i = 0; i < ((ArrayList<?>) arg).size(); i++){
-                fleet.add(i, (Ship) ((ArrayList<?>) arg).get(i));
-            }
-        }
+        fleet.add((Ship) arg);
+        System.out.println(((Ship) arg).getType() + " " + ((Ship) arg).getLocation());
     }
 
     @Override
     public void run() {
         try {
             while (true) {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
                 if (fleet.isEmpty()){
                     System.out.println("THERE IS NO FLEET IN BLARNEY");
                 }
