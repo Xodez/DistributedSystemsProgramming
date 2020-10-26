@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.beans.Observable;
 import model.Blarney;
 import model.Kinsale;
 import model.Youghal;
@@ -7,30 +8,33 @@ import model.Youghal;
 @Deprecated
 public class Controller {
 
-    public void StartThreads() {
+    // Creates the three sites
+    Kinsale kinsale = new Kinsale();
+    Youghal youghal = new Youghal();
+    Blarney blarney = new Blarney();
 
-        // Creates the three sites
-        Kinsale kinsale = new Kinsale();
-        Youghal youghal = new Youghal();
-        Blarney blarney = new Blarney();
+    // Creates threads of the three sites
+    Thread tYoughal = new Thread(youghal);
+    Thread tKinsale = new Thread(kinsale);
+    Thread tBlarney = new Thread(blarney);
 
-        // Adds blarney as an observer to Model.Kinsale and Model.Youghal
+    public void makeShip(String thread, String ship) {
+        if (thread.equalsIgnoreCase("KINSALE")) {
+            kinsale.createShip(ship);
+        }
+        else if (thread.equalsIgnoreCase("YOUGHAL")) {
+            youghal.createShip(ship);
+        }
+    }
+
+    public void startThreads(){
         kinsale.addObserver(blarney);
-        youghal.addObserver(blarney);
-
-        // Creates threads of the three sites
-        Thread tYoughal = new Thread(youghal);
-        Thread tKinsale = new Thread(kinsale);
-        Thread tBlarney = new Thread(blarney);
-
+        tKinsale.start();
+        tBlarney.start();
     }
 
-    public void setSceneKinsale(){
-
-    }
-
-    public void setSceneYoughal(){
-
+    public Kinsale kinsale(){
+        return kinsale;
     }
 
 }

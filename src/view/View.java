@@ -23,5 +23,4 @@ public class View extends Application {
         youghalStage.setScene(youghalScene);
         youghalStage.show();
     }
-
 }
