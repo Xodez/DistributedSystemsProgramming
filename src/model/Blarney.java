@@ -2,8 +2,9 @@ package model;
 
 import model.ships.Ship;
 
-import java.lang.reflect.Type;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 public class Blarney implements Observer, Runnable {
 
@@ -20,20 +21,15 @@ public class Blarney implements Observer, Runnable {
     public void run() {
         try {
             while (true) {
-                Thread.sleep(10000);
-                if (fleet.isEmpty()){
+                Thread.sleep(2000);
+                if (fleet.isEmpty()) {
                     System.out.println("THERE IS NO FLEET IN BLARNEY");
-                }
-                else if (fleet.size() == 10){
+                } else if (fleet.size() == 10) {
                     System.out.println("FLEET IN BLARNEY SPOTTED");
                 }
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public void test(ArrayList<Ship> s){
-        System.out.println(s.get(1).getType() + " ~~~~~IT WORKS?~~~~~");
     }
 }

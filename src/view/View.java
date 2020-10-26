@@ -1,5 +1,6 @@
 package view;
 
+import controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,13 +16,18 @@ import javafx.stage.Stage;
 
 public class View extends Application {
 
+    Controller c = new Controller();
+
     @Override
     public void start(Stage kinsaleStage) throws Exception {
         kinsaleView(kinsaleStage);
+        c.startThreads();
         youghalView();
     }
 
     public void kinsaleView(Stage kinsaleStage) {
+
+        String location = "KINSALE";
 
         // Stage
         kinsaleStage.setTitle("Kinsale View");
@@ -42,13 +48,22 @@ public class View extends Application {
         // Components
 
         Button sailBoat = new Button();
-        sailBoat.setText("Sail Boat");
+        sailBoat.setText("Sailing Ship");
+        sailBoat.setOnAction(e ->{
+            createShip(sailBoat, location);
+        });
 
         Button aircraftCarrier = new Button();
         aircraftCarrier.setText("Aircraft Carrier");
+        aircraftCarrier.setOnAction(e ->{
+            createShip(aircraftCarrier, location);
+        });
 
         Button destroyer = new Button();
         destroyer.setText("Destroyer");
+        destroyer.setOnAction(e ->{
+            createShip(destroyer, location);
+        });
 
         TextArea info = new TextArea();
         info.setEditable(false);
@@ -71,8 +86,14 @@ public class View extends Application {
     }
 
     public void youghalView() {
+
         // Stage
         Stage youghalStage = new Stage();
+        youghalStage.setTitle("Youghal View");
+
+        String location = "YOUGHAL";
+
+        // Stage
         youghalStage.setTitle("Youghal View");
 
         // Scene
@@ -91,13 +112,22 @@ public class View extends Application {
         // Components
 
         Button sailBoat = new Button();
-        sailBoat.setText("Sail Boat");
+        sailBoat.setText("Sailing Ship");
+        sailBoat.setOnAction(e ->{
+            createShip(sailBoat, location);
+        });
 
         Button aircraftCarrier = new Button();
         aircraftCarrier.setText("Aircraft Carrier");
+        aircraftCarrier.setOnAction(e ->{
+            createShip(aircraftCarrier, location);
+        });
 
         Button destroyer = new Button();
         destroyer.setText("Destroyer");
+        destroyer.setOnAction(e ->{
+            createShip(destroyer, location);
+        });
 
         TextArea info = new TextArea();
         info.setEditable(false);
@@ -117,6 +147,12 @@ public class View extends Application {
         root.setBottom(info);
         root.setTop(topLayout);
         youghalStage.show();
+    }
+
+    public void createShip(Button button, String location){
+        button.setOnAction(e ->{
+            c.makeShip(location, button.getText());
+        });
     }
 
     public static void main(String[] args) {

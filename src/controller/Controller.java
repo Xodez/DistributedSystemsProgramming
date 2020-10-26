@@ -26,7 +26,9 @@ public class Controller {
 
     public void startThreads() {
         kinsale.addObserver(blarney);
+        youghal.addObserver(blarney);
         tKinsale.start();
+        tYoughal.start();
         tBlarney.start();
     }
 

@@ -22,6 +22,9 @@ public class Kinsale extends Observable implements Runnable {
         } else if (ship.equalsIgnoreCase("SAILING SHIP")) {
             createdShip = sf.produceShip();
         }
+        else{
+            return null;
+        }
         createdShip.setLocation("Kinsale");
         return createdShip;
     }
@@ -30,11 +33,11 @@ public class Kinsale extends Observable implements Runnable {
     public void run() {
         try {
             while (true) {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 if (createdShip != null) {
                     System.out.println("SHIPS IN FLEET");
 
-                    System.out.println(createdShip.getType());
+                    System.out.println(createdShip.getLocation());
 
                     this.setChanged();
                     this.notifyObservers(createdShip);

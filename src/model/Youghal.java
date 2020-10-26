@@ -13,23 +13,38 @@ public class Youghal extends Observable implements Runnable {
     AircraftCarrierFactory acf = new AircraftCarrierFactory();
     DestroyerFactory df = new DestroyerFactory();
     SailingFactory sf = new SailingFactory();
-    ArrayList<Ship> fleet = new ArrayList<>();
+    Ship createdShip;
 
-    public void createShip(String ship){
-        if(ship.equalsIgnoreCase("AIRCRAFT CARRIER")) {
-            fleet.add(acf.produceShip());
+    public Ship createShip(String ship) {
+        if (ship.equalsIgnoreCase("AIRCRAFT CARRIER")) {
+            createdShip = acf.produceShip();
+        } else if (ship.equalsIgnoreCase("DESTROYER")) {
+            createdShip = df.produceShip();
+        } else if (ship.equalsIgnoreCase("SAILING SHIP")) {
+            createdShip = sf.produceShip();
         }
-        else if(ship.equalsIgnoreCase("DESTROYER")){
-            fleet.add(df.produceShip());
+        else{
+            return null;
         }
-        else if(ship.equalsIgnoreCase("SAILING SHIP")) {
-            fleet.add(sf.produceShip());
-        }
+        createdShip.setLocation("Youghal");
+        return createdShip;
     }
 
     @Override
     public void run() {
         try {
+            while (true) {
+                Thread.sleep(2000);
+                if (createdShip != null) {
+                    System.out.println("SHIPS IN FLEET");
+
+                    System.out.println(createdShip.getLocation());
+
+                    this.setChanged();
+                    this.notifyObservers(createdShip);
+                    createdShip = null;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
