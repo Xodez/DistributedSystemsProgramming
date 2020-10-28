@@ -1,5 +1,5 @@
 package model.bombs;
 
 public interface ShellFactory {
-    Shell produceShell(String Type);
+    Shell produceShell();
 }

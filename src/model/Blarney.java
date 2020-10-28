@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("Deprecated")
 public class Blarney implements Observer, Runnable {
 
     ArrayList<Ship> fleet = new ArrayList<>();

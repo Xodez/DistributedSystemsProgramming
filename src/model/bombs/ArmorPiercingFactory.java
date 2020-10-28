@@ -2,7 +2,7 @@ package model.bombs;
 
 public class ArmorPiercingFactory implements ShellFactory{
     @Override
-    public Shell produceShell(String Type) {
+    public Shell produceShell() {
         return new ShellArmorPiercing();
     }
 }
