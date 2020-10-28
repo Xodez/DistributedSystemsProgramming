@@ -19,10 +19,12 @@ public class View extends Application {
     Controller c = new Controller();
 
     @Override
-    public void start(Stage kinsaleStage) throws Exception {
-        kinsaleView(kinsaleStage);
+    public void start(Stage kinsaleStage) {
         c.addObservers();
+        kinsaleView(kinsaleStage);
         youghalView();
+        Thread blarneyThread = new Thread(c.getBlarney());
+        blarneyThread.start();
     }
 
     public void kinsaleView(Stage kinsaleStage) {

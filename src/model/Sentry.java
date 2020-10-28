@@ -19,16 +19,15 @@ public abstract class Sentry extends Observable implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("Thread is running");
+            Ship tempShip = createdShip;
             Thread.sleep(2000);
-            System.out.println(this.createdShip + " " + createdShip);
-            if (createdShip != null) {
+            if (tempShip != null) {
                 System.out.println("SHIPS IN FLEET");
 
-                System.out.println(createdShip.getLocation());
+                System.out.println(tempShip.getLocation());
 
                 this.setChanged();
-                this.notifyObservers(createdShip);
+                this.notifyObservers(tempShip);
                 createdShip = null;
             }
         } catch (Exception e) {

@@ -36,4 +36,7 @@ public class Controller {
         }
     }
 
+    public Blarney getBlarney() {
+        return blarney;
+    }
 }
