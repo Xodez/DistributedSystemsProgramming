@@ -34,7 +34,6 @@ public class Blarney implements Observer, Runnable, BlarneyDao {
                     Ship shipTemp = fleet.get(fleet.size() - 1);
                     fleet.remove(fleet.size() - 1);
                     Shell shellTemp = createShell(shipTemp);
-                    System.out.println(shellTemp);
                     Storage storageTemp = new Storage();
                     storageTemp.setShip(shipTemp);
                     storageTemp.setShell(shellTemp);
