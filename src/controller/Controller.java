@@ -2,6 +2,7 @@ package controller;
 
 import model.Blarney;
 import model.Kinsale;
+import model.Sentry;
 import model.Youghal;
 
 public class Controller {
@@ -11,29 +12,28 @@ public class Controller {
     Youghal youghal = new Youghal();
     Blarney blarney = new Blarney();
 
-    // Creates threads of the three sites
-    Thread tYoughal = new Thread(youghal);
-    Thread tKinsale = new Thread(kinsale);
-    Thread tBlarney = new Thread(blarney);
-
     public void makeShip(String thread, String ship) {
         if (thread.equalsIgnoreCase("KINSALE")) {
-            kinsale.createShip(ship);
+            this.kinsale.createShip(ship);
         } else if (thread.equalsIgnoreCase("YOUGHAL")) {
-            youghal.createShip(ship);
+            this.youghal.createShip(ship);
         }
     }
 
-    public void startThreads() {
-        kinsale.addObserver(blarney);
-        youghal.addObserver(blarney);
-        tKinsale.start();
-        tYoughal.start();
-        tBlarney.start();
+    public void addObservers() {
+        this.kinsale.addObserver(blarney);
+        this.youghal.addObserver(blarney);
     }
 
-    public Kinsale kinsale() {
-        return kinsale;
+    public Sentry getSentry(String sentry) {
+        if (sentry.equalsIgnoreCase("KINSALE")) {
+            return this.kinsale;
+        } else if (sentry.equalsIgnoreCase("YOUGHAL")) {
+            return this.youghal;
+        }
+        else{
+            return null;
+        }
     }
 
 }

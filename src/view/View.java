@@ -21,7 +21,7 @@ public class View extends Application {
     @Override
     public void start(Stage kinsaleStage) throws Exception {
         kinsaleView(kinsaleStage);
-        c.startThreads();
+        c.addObservers();
         youghalView();
     }
 
@@ -50,19 +50,25 @@ public class View extends Application {
         Button sailBoat = new Button();
         sailBoat.setText("Sailing Ship");
         sailBoat.setOnAction(e ->{
-            createShip(sailBoat, location);
+            c.makeShip(location, sailBoat.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         Button aircraftCarrier = new Button();
         aircraftCarrier.setText("Aircraft Carrier");
         aircraftCarrier.setOnAction(e ->{
-            createShip(aircraftCarrier, location);
+            c.makeShip(location, aircraftCarrier.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         Button destroyer = new Button();
         destroyer.setText("Destroyer");
         destroyer.setOnAction(e ->{
-            createShip(destroyer, location);
+            c.makeShip(location, destroyer.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         TextArea info = new TextArea();
@@ -114,19 +120,25 @@ public class View extends Application {
         Button sailBoat = new Button();
         sailBoat.setText("Sailing Ship");
         sailBoat.setOnAction(e ->{
-            createShip(sailBoat, location);
+            c.makeShip(location, sailBoat.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         Button aircraftCarrier = new Button();
         aircraftCarrier.setText("Aircraft Carrier");
         aircraftCarrier.setOnAction(e ->{
-            createShip(aircraftCarrier, location);
+            c.makeShip(location, aircraftCarrier.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         Button destroyer = new Button();
         destroyer.setText("Destroyer");
         destroyer.setOnAction(e ->{
-            createShip(destroyer, location);
+            c.makeShip(location, destroyer.getText());
+            Thread shipThread = new Thread(c.getSentry(location));
+            shipThread.start();
         });
 
         TextArea info = new TextArea();
@@ -147,12 +159,6 @@ public class View extends Application {
         root.setBottom(info);
         root.setTop(topLayout);
         youghalStage.show();
-    }
-
-    public void createShip(Button button, String location){
-        button.setOnAction(e ->{
-            c.makeShip(location, button.getText());
-        });
     }
 
     public static void main(String[] args) {
