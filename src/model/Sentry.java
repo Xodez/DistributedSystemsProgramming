@@ -7,6 +7,7 @@ import model.ships.Ship;
 
 import java.util.Observable;
 
+@SuppressWarnings("Deprecated")
 public abstract class Sentry extends Observable implements Runnable {
     AircraftCarrierFactory acf = new AircraftCarrierFactory();
     DestroyerFactory df = new DestroyerFactory();

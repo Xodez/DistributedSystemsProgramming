@@ -1,10 +1,6 @@
 package model;
 
-import model.ships.AircraftCarrierFactory;
-import model.ships.DestroyerFactory;
-import model.ships.SailingFactory;
 import model.ships.Ship;
-import java.util.Observable;
 
 @SuppressWarnings("Deprecated")
 public class Kinsale extends Sentry {
@@ -16,11 +12,11 @@ public class Kinsale extends Sentry {
             createdShip = df.produceShip();
         } else if (ship.equalsIgnoreCase("SAILING SHIP")) {
             createdShip = sf.produceShip();
-        }
-        else{
+        } else {
             return null;
         }
         createdShip.setLocation("Kinsale");
         return createdShip;
     }
+
 }

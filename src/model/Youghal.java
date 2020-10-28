@@ -19,4 +19,5 @@ public class Youghal extends Sentry {
         createdShip.setLocation("Youghal");
         return createdShip;
     }
+
 }
