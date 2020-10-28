@@ -20,24 +20,28 @@ public class View extends Application {
 
     @Override
     public void start(Stage kinsaleStage) {
+
+        // adds Blarney as observer to Kinsale and Youghal
         c.addObservers();
-        kinsaleView(kinsaleStage);
-        youghalView();
+
+        // creates Blarney thread and starts it
         Thread blarneyThread = new Thread(c.getBlarney());
         blarneyThread.start();
+
+        // Launches gui for Kinsale and Youghal
+        gui(new Stage(), "Kinsale");
+        gui(new Stage(), "Youghal");
     }
 
-    public void kinsaleView(Stage kinsaleStage) {
-
-        String location = "KINSALE";
+    public void gui(Stage stage, String location) {
 
         // Stage
-        kinsaleStage.setTitle("Kinsale View");
+        stage.setTitle(location + " " + "View");
 
         // Scene
         BorderPane root = new BorderPane();
         Scene kinsaleScene = new Scene(root, 1280, 720);
-        kinsaleStage.setScene(kinsaleScene);
+        stage.setScene(kinsaleScene);
 
         // Layout
 
@@ -49,12 +53,22 @@ public class View extends Application {
 
         // Components
 
+        Font textAreaFont = Font.font("Lato", FontWeight.BOLD, FontPosture.REGULAR, 20);
+
+        TextArea info = new TextArea();
+        info.setEditable(false);
+        info.maxHeight(50);
+        info.setFont(textAreaFont);
+
+        Font font = Font.font("Roboto", FontWeight.BOLD, FontPosture.REGULAR, 25);
+
         Button sailBoat = new Button();
         sailBoat.setText("Sailing Ship");
         sailBoat.setOnAction(e ->{
             c.makeShip(location, sailBoat.getText());
             Thread shipThread = new Thread(c.getSentry(location));
             shipThread.start();
+            info.setText("Sail Boat spotted");
         });
 
         Button aircraftCarrier = new Button();
@@ -63,6 +77,7 @@ public class View extends Application {
             c.makeShip(location, aircraftCarrier.getText());
             Thread shipThread = new Thread(c.getSentry(location));
             shipThread.start();
+            info.setText("Aircraft Carrier spotted");
         });
 
         Button destroyer = new Button();
@@ -71,16 +86,11 @@ public class View extends Application {
             c.makeShip(location, destroyer.getText());
             Thread shipThread = new Thread(c.getSentry(location));
             shipThread.start();
+            info.setText("Destroyer spotted");
         });
 
-        TextArea info = new TextArea();
-        info.setEditable(false);
-        info.maxHeight(50);
-
-        Font font = Font.font("Roboto", FontWeight.BOLD, FontPosture.REGULAR, 25);
-
         Label title = new Label();
-        title.setText("Kinsale");
+        title.setText(location);
         title.setFont(font);
 
         // Deployment
@@ -90,77 +100,7 @@ public class View extends Application {
         root.setCenter(buttons);
         root.setBottom(info);
         root.setTop(topLayout);
-        kinsaleStage.show();
-    }
-
-    public void youghalView() {
-
-        // Stage
-        Stage youghalStage = new Stage();
-        youghalStage.setTitle("Youghal View");
-
-        String location = "YOUGHAL";
-
-        // Stage
-        youghalStage.setTitle("Youghal View");
-
-        // Scene
-        BorderPane root = new BorderPane();
-        Scene kinsaleScene = new Scene(root, 1280, 720);
-        youghalStage.setScene(kinsaleScene);
-
-        // Layout
-
-        HBox buttons = new HBox();
-        buttons.setAlignment(Pos.CENTER);
-
-        HBox topLayout = new HBox();
-        topLayout.setAlignment(Pos.CENTER);
-
-        // Components
-
-        Button sailBoat = new Button();
-        sailBoat.setText("Sailing Ship");
-        sailBoat.setOnAction(e ->{
-            c.makeShip(location, sailBoat.getText());
-            Thread shipThread = new Thread(c.getSentry(location));
-            shipThread.start();
-        });
-
-        Button aircraftCarrier = new Button();
-        aircraftCarrier.setText("Aircraft Carrier");
-        aircraftCarrier.setOnAction(e ->{
-            c.makeShip(location, aircraftCarrier.getText());
-            Thread shipThread = new Thread(c.getSentry(location));
-            shipThread.start();
-        });
-
-        Button destroyer = new Button();
-        destroyer.setText("Destroyer");
-        destroyer.setOnAction(e ->{
-            c.makeShip(location, destroyer.getText());
-            Thread shipThread = new Thread(c.getSentry(location));
-            shipThread.start();
-        });
-
-        TextArea info = new TextArea();
-        info.setEditable(false);
-        info.maxHeight(50);
-
-        Font font = Font.font("Roboto", FontWeight.BOLD, FontPosture.REGULAR, 25);
-
-        Label title = new Label();
-        title.setText("Youghal");
-        title.setFont(font);
-
-        // Deployment
-
-        buttons.getChildren().addAll(sailBoat, aircraftCarrier, destroyer);
-        topLayout.getChildren().addAll(title);
-        root.setCenter(buttons);
-        root.setBottom(info);
-        root.setTop(topLayout);
-        youghalStage.show();
+        stage.show();
     }
 
     public static void main(String[] args) {
