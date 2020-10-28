@@ -5,6 +5,6 @@ public class ArmorPiercingFactory implements ShellFactory{
     public Shell produceShell() {
         ShellArmorPiercing temp = new ShellArmorPiercing();
         temp.setType();
-        return new ShellArmorPiercing();
+        return temp;
     }
 }

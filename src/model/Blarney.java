@@ -5,7 +5,6 @@ import model.bombs.BlastBombFactory;
 import model.bombs.Shell;
 import model.bombs.TorpedoFactory;
 import model.ships.Ship;
-
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,15 +31,17 @@ public class Blarney implements Observer, Runnable, BlarneyDao {
             while (true) {
                 Thread.sleep(2000);
                 if (fleet.size() != 0) {
-                    Ship shipTemp = fleet.get(-1);
+                    Ship shipTemp = fleet.get(fleet.size() - 1);
+                    fleet.remove(fleet.size() - 1);
                     Shell shellTemp = createShell(shipTemp);
+                    System.out.println(shellTemp);
                     Storage storageTemp = new Storage();
                     storageTemp.setShip(shipTemp);
                     storageTemp.setShell(shellTemp);
                     production.add(storageTemp);
-                }
-                for (Storage storage : production) {
-                    System.out.println(storage.toString());
+                    for (Storage storage : production) {
+                        System.out.println(storage.toString());
+                    }
                 }
             }
         } catch (InterruptedException e) {

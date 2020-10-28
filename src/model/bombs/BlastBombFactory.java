@@ -5,6 +5,6 @@ public class BlastBombFactory implements ShellFactory{
     public Shell produceShell() {
         ShellBlastBomb temp = new ShellBlastBomb();
         temp.setType();
-        return new ShellBlastBomb();
+        return temp;
     }
 }

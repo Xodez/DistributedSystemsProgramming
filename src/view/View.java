@@ -68,7 +68,7 @@ public class View extends Application {
             c.makeShip(location, sailBoat.getText());
             Thread shipThread = new Thread(c.getSentry(location));
             shipThread.start();
-            info.setText("Sail Boat spotted");
+            info.setText("Sail Ship spotted");
         });
 
         Button aircraftCarrier = new Button();

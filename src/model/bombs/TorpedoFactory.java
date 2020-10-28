@@ -5,6 +5,6 @@ public class TorpedoFactory implements ShellFactory{
     public Shell produceShell() {
         ShellTorpedo temp = new ShellTorpedo();
         temp.setType();
-        return new ShellTorpedo();
+        return temp;
     }
 }
