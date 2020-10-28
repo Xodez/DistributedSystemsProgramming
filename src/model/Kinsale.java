@@ -2,6 +2,7 @@ package model;
 
 @SuppressWarnings("Deprecated")
 public class Kinsale extends Sentry {
+
     @Override
     public void createShip(String ship) {
         if (ship.equalsIgnoreCase("AIRCRAFT CARRIER")) {
