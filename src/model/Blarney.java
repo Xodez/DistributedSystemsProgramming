@@ -38,9 +38,12 @@ public class Blarney implements Observer, Runnable, BlarneyDao {
                     storageTemp.setShip(shipTemp);
                     storageTemp.setShell(shellTemp);
                     production.add(storageTemp);
+                    int i = 1;
                     for (Storage storage : production) {
-                        System.out.println(storage.toString());
+                        System.out.println(i + ": " + storage.toString());
+                        i += 1;
                     }
+                    System.out.println("\n");
                 }
             }
         } catch (InterruptedException e) {
