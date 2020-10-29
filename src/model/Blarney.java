@@ -20,9 +20,8 @@ public class Blarney implements Observer, Runnable, BlarneyDao {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("BLARNEY UPDATED");
+        System.out.println("BLARNEY UPDATED\n");
         fleet.add((Ship) arg);
-        System.out.println(((Ship) arg).getType() + " " + ((Ship) arg).getLocation());
     }
 
     @Override
@@ -39,6 +38,7 @@ public class Blarney implements Observer, Runnable, BlarneyDao {
                     storageTemp.setShell(shellTemp);
                     production.add(storageTemp);
                     int i = 1;
+                    System.out.println("Adding to records: " + " " +storageTemp.toString() + "\n");
                     for (Storage storage : production) {
                         System.out.println(i + ": " + storage.toString());
                         i += 1;

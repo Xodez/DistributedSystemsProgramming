@@ -22,10 +22,7 @@ public abstract class Sentry extends Observable implements Runnable {
             Ship tempShip = createdShip;
             Thread.sleep(2000);
             if (tempShip != null) {
-                System.out.println("SHIPS IN FLEET");
-
-                System.out.println(tempShip.getLocation());
-
+                System.out.println("Ship spotted in" + " " + tempShip.getLocation() + "!\n");
                 this.setChanged();
                 this.notifyObservers(tempShip);
                 createdShip = null;
